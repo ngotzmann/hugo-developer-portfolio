@@ -55,6 +55,7 @@ home = "Home"
 # Meta data
 description = "The website of Sam Robbins, 2nd Year Computer Science Student at Durham University"
 author = "Sam Robbins"
+year = 2021
 
 
   [params.contact]

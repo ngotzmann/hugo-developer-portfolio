@@ -184,6 +184,20 @@ skill:
       description: Details coming soon, contact me if you want to know more
 ```
 
+##### subskill
+
+- `enable` can be used to hide this seb section
+- `titel` will be used as "alt" text on image
+- `logo` determines the image that shows up
+
+```yml
+subskill:
+  enable: true
+  item:
+    - title: Git
+      logo: https://cdn.svgporn.com/logos/git-icon.svg
+```
+
 #### portfolio
 
 This is used to highlight specific portfolio projects you want to show

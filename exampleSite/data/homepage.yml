@@ -1,6 +1,9 @@
 ---
+theming:
+  linkColor: 800080
 banner:
   title: Hi! I’m Sam
+  titelColor: 00FF00
 social:
   twitter: ""
   linkedin: sam-robbins-gb
@@ -21,6 +24,11 @@ skill:
     - title: JavaScript
       logo: https://res.cloudinary.com/samrobbins/image/upload/v1591793272/logos/logos_javascript_adj1dx.svg
       description: Details coming soon, contact me if you want to know more
+subskill:
+  enable: true
+  item:
+    - title: Git
+      logo: https://cdn.svgporn.com/logos/git-icon.svg
 experience:
   enable: true
   item:
