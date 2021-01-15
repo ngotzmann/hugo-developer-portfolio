@@ -16,12 +16,14 @@ a:visited {
 </style>
 
 {{ "<!-- Index -->" | safeHTML }}
+{{ $siteData := (index .Site.Data .Site.Language.Lang) }}
+
 {{ $index := resources.Get "css/index.css" | minify }}
 <link rel="stylesheet" href="{{ $index.Permalink | relURL}}">
 
 <section>
     <div class="uk-container uk-margin-xlarge-top uk-margin-xlarge-bottom">
-        <h1 class="uk-heading-large" style="color: #{{ .Site.Data.homepage.banner.titleColor }}">{{ .Site.Data.homepage.banner.title | safeHTML }}</h1>
+        <h1 class="uk-heading-large" style="color: #{{ $siteData.homepage.banner.titleColor }}">{{ $siteData.homepage.banner.title | safeHTML }}</h1>
     </div>
 </section>
 <!--
@@ -36,37 +38,32 @@ a:visited {
 -->
 <div class="uk-text-center uk-margin-xlarge-bottom uk-margin-xlarge-top">
     <ul id="links" class="icons">
-        {{ range .Site.Languages -}}
-        {{ if ne .LanguageName $.Site.Language.LanguageName }}
-        <li><a href="/{{ .Lang }}">{{ .LanguageName }}</a></li>
-        {{ end }}
-        {{ end }}
-        {{ if .Site.Data.homepage.social.twitter }}
-        <li><a href="https://twitter.com/{{ .Site.Data.homepage.social.twitter }}" > <img
+        {{ if $siteData.homepage.social.twitter }}
+        <li><a href="https://twitter.com/{{ $siteData.homepage.social.twitter }}" > <img
                     class="contain" src="https://cdn.svgporn.com/logos/twitter.svg" alt="Twitter" loading="lazy"></a></li>
-        {{ end }} {{ if .Site.Data.homepage.social.github }}
-        <li><a href="https://github.com/{{ .Site.Data.homepage.social.github }}"> <img
+        {{ end }} {{ if $siteData.homepage.social.github }}
+        <li><a href="https://github.com/{{ $siteData.homepage.social.github }}"> <img
                     class="contain" src="https://cdn.svgporn.com/logos/github-icon.svg" alt="GitHub" loading="lazy"> </a></li>
-        {{ end }} {{ if .Site.Data.homepage.social.gitlab }}
-        <li><a href="https://gitlab.com/{{ .Site.Data.homepage.social.gitlab }}"> <img
+        {{ end }} {{ if $siteData.homepage.social.gitlab }}
+        <li><a href="https://gitlab.com/{{ $siteData.homepage.social.gitlab }}"> <img
                     class="contain" src="https://cdn.svgporn.com/logos/gitlab.svg" alt="GitLab" loading="lazy"></a></li>
-        {{ end }} {{ if .Site.Data.homepage.social.linkedin }}
-        <li><a href="https://www.linkedin.com/in/{{ .Site.Data.homepage.social.linkedin }}">
+        {{ end }} {{ if $siteData.homepage.social.linkedin }}
+        <li><a href="https://www.linkedin.com/in/{{ $siteData.homepage.social.linkedin }}">
             <img class="contain" src="https://cdn.svgporn.com/logos/linkedin.svg" alt="LinkedIn" loading="lazy"> </a></li>
-        {{ end }} {{ if .Site.Data.homepage.social.xing }}
-        <li><a href="https://www.xing.com/profile/{{ .Site.Data.homepage.social.xing }}">
+        {{ end }} {{ if $siteData.homepage.social.xing }}
+        <li><a href="https://www.xing.com/profile/{{ $siteData.homepage.social.xing }}">
             <img class="contain" src="https://cdn.freebiesupply.com/logos/thumbs/2x/xing-icon-logo.png" alt="Xing" loading="lazy"> </a></li>    
-        {{ end }}{{ if .Site.Data.homepage.social.mail }}
-        <li><a href="mailto:{{ .Site.Data.homepage.social.mail }}" > <img
+        {{ end }}{{ if $siteData.homepage.social.mail }}
+        <li><a href="mailto:{{ $siteData.homepage.social.mail }}" > <img
             class="contain" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Email_%281674%29_-_The_Noun_Project.svg" alt="EMail" loading="lazy"></a></li>    
-        {{ end }} {{ if .Site.Data.homepage.social.facebook }}
-        <li><a href="https://www.facebook.com/{{ .Site.Data.homepage.social.facebook }}"> <img
+        {{ end }} {{ if $siteData.homepage.social.facebook }}
+        <li><a href="https://www.facebook.com/{{ $siteData.homepage.social.facebook }}"> <img
                     class="contain" src="https://cdn.svgporn.com/logos/facebook.svg" alt="Facebook" loading="lazy"></a></li>
-        {{ end }} {{ if .Site.Data.homepage.social.instagram }}
-        <li><a href="https://instagram.com/{{ .Site.Data.homepage.social.instagram }}"> <img
+        {{ end }} {{ if $siteData.homepage.social.instagram }}
+        <li><a href="https://instagram.com/{{ $siteData.homepage.social.instagram }}"> <img
                     class="contain" src="https://cdn.svgporn.com/logos/instagram-icon.svg" alt="Instagram" loading="lazy"></a></li>
-        {{ end }}{{ if .Site.Data.homepage.social.gmail }}
-        <li><a href="mailto:{{ .Site.Data.homepage.social.gmail }}@gmail.com" > <img
+        {{ end }}{{ if $siteData.homepage.social.gmail }}
+        <li><a href="mailto:{{ $siteData.homepage.social.gmail }}@gmail.com" > <img
                     class="contain" src="https://cdn.svgporn.com/logos/google-gmail.svg" alt="Gmail" loading="lazy"></a></li>
         {{ end }}
     </ul>
@@ -81,12 +78,12 @@ a:visited {
  /_/    \_\ |_.__/   \___/   \__,_|  \__|
 
 -->
-{{ if .Site.Data.homepage.about.enable }}
+{{ if $siteData.homepage.about.enable }}
 <!-- about -->
 <section class="uk-margin-large-top">
     <div class="uk-container">
         <div class="uk-text-center">
-            {{ with .Site.Data.homepage.about }}
+            {{ with $siteData.homepage.about }}
             <p class="uk-text-lead">{{.content | markdownify}}</p>
             {{ with .button }}
             <a class="uk-button uk-button-text" href="{{.URL| absURL}}">{{.btnText}}</a>
@@ -103,12 +100,12 @@ a:visited {
 
 
 <!-- portfolio -->
-{{ if .Site.Data.homepage.portfolio.enable }}
+{{ if $siteData.homepage.portfolio.enable }}
 
 <section class="uk-margin-large-bottom uk-margin-large-top">
     <div class="uk-container">
         <h1 class="uk-heading-line  uk-heading-medium"><span>Portfolio</span></h1>
-        {{ range .Site.Data.homepage.portfolio.item }}
+        {{ range .homepage.portfolio.item }}
         <div>
         <h2 class="uk-text-center uk-text-bold uk-margin-large-top"> {{.title}} </h2>
         <div class="uk-flex uk-flex-center">
@@ -146,9 +143,9 @@ a:visited {
 
 
 -->
-{{ if .Site.Data.homepage.skill.enable }}
+{{ if $siteData.homepage.skill.enable }}
 
-{{ range .Site.Data.homepage.skill.item }}
+{{ range $siteData.homepage.skill.item }}
 <div id="{{ replace (replace .title " " "_") "." "_" }}" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -161,11 +158,11 @@ a:visited {
 {{ end }}
 <section class="uk-margin-large-top uk-margin-large-bottom">
     <div class="uk-container">
-        <h1 class="uk-heading-line uk-text-center uk-heading-small"><span>Skills</span></h1>
-        <p class="uk-text-center uk-text-lead"><i>Click the images below to find out more</i></p>
+        <h1 class="uk-heading-line uk-text-center uk-heading-small"><span>{{ $siteData.homepage.skill.name }}</span></h1>
+        <p class="uk-text-center uk-text-lead"><i>{{ $siteData.homepage.skill.info }}</i></p>
         <div class="uk-child-width-1-6@l uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-text-center uk-flex-center"
             uk-grid>
-            {{ range .Site.Data.homepage.skill.item }}
+            {{ range $siteData.homepage.skill.item }}
             <div class="imagemargin">
                 <img class="contain skills" src="{{.logo}}" alt="{{.company}}" loading="lazy" style="cursor: pointer"
                     uk-toggle="target: #{{ replace (replace .title " " "_") "." "_" }}">
@@ -173,10 +170,10 @@ a:visited {
             </div>
             {{ end }}
         </div>
-        {{ if .Site.Data.homepage.subskill.enable }}
-        <h3 class="uk-heading-line uk-text-center uk-heading-line"><span>Some more skills</span></h3>
+        {{ if $siteData.homepage.subskill.enable }}
+        <h3 class="uk-heading-line uk-text-center uk-heading-line"><span>{{ $siteData.homepage.subskill.name }}</span></h3>
             <div class="uk-flex-center" style="margin-top: 60px; margin-bottom: 40px;" uk-grid>
-            {{ range .Site.Data.homepage.subskill.item }}
+            {{ range $siteData.homepage.subskill.item }}
             <div>
                 <img style="width: 40px; height: 40px;" class="contain skills" src="{{.logo}}" alt="{{.titel}}" loading="lazy">
             </div>
@@ -203,13 +200,13 @@ a:visited {
 
 -->
 <!-- experience -->
-{{ if .Site.Data.homepage.experience.enable }}
+{{ if $siteData.homepage.experience.enable }}
 <section class="uk-margin-large-bottom">
     <div class="uk-container">
-        <h1 class="uk-heading-line uk-text-left uk-heading-small"><span>Experience</span></h1>
+        <h1 class="uk-heading-line uk-text-left uk-heading-small"><span>{{ $siteData.homepage.experience.name }}</span></h1>
         <div class="uk-child-width-1-4@m uk-child-width-1-2  uk-text-center uk-flex-center" uk-grid
             style="padding-left: 20px; padding-right: 20px">
-            {{ range .Site.Data.homepage.experience.item }}
+            {{ range $siteData.homepage.experience.item }}
             <div>
                 <div class="uk-card uk-card-default uk-height-large">
                     <div class="uk-card-body" style="padding: initial; padding-top: 50%;">
@@ -234,7 +231,7 @@ a:visited {
 
 
 <!-- Certifications -->
-{{ if .Site.Data.homepage.certifications.enable }}
+{{ if $siteData.homepage.certifications.enable }}
 
 
 <section class="uk-margin-large-top uk-margin-medium-bottom">
@@ -243,7 +240,7 @@ a:visited {
         <p class="uk-text-center uk-text-lead"><i>Click the images below to view the proof</i></p>
         <div class="uk-child-width-1-6@l uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-text-center uk-flex-center"
              uk-grid >
-            {{ range .Site.Data.homepage.certifications.item }}
+            {{ range $siteData.homepage.certifications.item }}
             <a href="{{.url}}" class="imagemargin">
                 <img class="contain certs" src="{{.image}}" alt="{{.title}}" loading="lazy" style="cursor: pointer">
                 {{.title}}
@@ -259,7 +256,7 @@ a:visited {
 
 
 <!-- Awards -->
-{{ if .Site.Data.homepage.awards.enable }}
+{{ if $siteData.homepage.awards.enable }}
 
 
 <section class="uk-margin-large-top uk-margin-medium-bottom">
@@ -268,7 +265,7 @@ a:visited {
 
         <div class="uk-child-width-1-6@l uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-text-center uk-flex-center"
             uk-grid uk-height-match="target: > div > h4">
-            {{ range .Site.Data.homepage.awards.item }}
+            {{ range $siteData.homepage.awards.item }}
             <div class="imagemargin">
                 <img class="contain certs" src="{{.image}}" alt="{{.title}}" loading="lazy" >
                 <h4>{{.title}}</h4>
@@ -291,7 +288,7 @@ a:visited {
 <!-- /Awards -->
 
 <!--Hackathons-->
-{{ if .Site.Data.homepage.hackathons.enable }}
+{{ if $siteData.homepage.hackathons.enable }}
 
 <section class="uk-margin-large-bottom">
     <div class="uk-container">
@@ -301,7 +298,7 @@ a:visited {
 </section>
 <div class="uk-container uk-margin-large-bottom uk-text-center">
     <ul id="hexGrid">
-        {{range .Site.Data.homepage.hackathons.item}}
+        {{range $siteData.homepage.hackathons.item}}
         <li class="hex">
             <div class="hexIn">
                 <div class="hexLink">
@@ -350,7 +347,7 @@ a:visited {
 
 
 -->
-{{ if .Site.Data.homepage.education.enable }}
+{{ if $siteData.homepage.education.enable }}
 <!-- education -->
 <section class="uk-margin-xlarge-bottom">
     <div class="uk-container">
@@ -361,7 +358,7 @@ a:visited {
         <div class=" uk-grid-large uk-child-width-1-3@s uk-child-width-1  uk-text-center uk-flex-center" uk-grid
             style="padding-left: 20px; padding-right: 20px">
 
-            {{ range .Site.Data.homepage.education.item }}
+            {{ range $siteData.homepage.education.item }}
             <div>
                 <div class="uk-card uk-card-default uk-height-max-large">
                     <div class="uk-card-media-top">

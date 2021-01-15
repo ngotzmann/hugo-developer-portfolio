@@ -4,12 +4,17 @@
 
 ![Website Image](https://res.cloudinary.com/samrobbins/image/upload/v1591885280/screenshot_aexm2m.png)
 
+## For live demo and i18n example
+
+Live demo: [ngotzmann.net](https://ngotzmann.net)
+
 ## Features
 
 - Responsive Design
 - Blog Section
 - Portfolio Section
 - Homepage to show off skills
+- I18N
 
 ## Installation
 
@@ -177,6 +182,7 @@ about:
 
 ```yml
 skill:
+  name: Skills
   enable: true
   item:
     - title: JavaScript
@@ -192,6 +198,7 @@ skill:
 
 ```yml
 subskill:
+  name: Some more skills
   enable: true
   item:
     - title: Git
@@ -234,6 +241,7 @@ portfolio:
 
 ```yml
 experience:
+  name: Experience
   enable: true
   item:
     - logo: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793271/logos/logos_google_id6v9a.svg

@@ -24,10 +24,19 @@
                 <li><a style="font-size: 18px; text-transform: none" href="{{ .URL | relURL }}">{{.Name}}</a></li>
                 {{end}}
                 {{end}}
-            </ul>
-
+                <li><span style="font-size: 18px; text-transform: none; align-items: center; display: flex; min-height: 80px; padding: 0 15px;">|</span></li>
+                {{ if .Site.IsMultiLingual }}
+                    {{ range $.Translations }}
+                        <li>
+                            <a style="font-size: 18px; list-style-type: none; text-transform: uppercase; color: #{{ .Site.Data.homepage.theming.linkColor }};" 
+                               title="{{ .Language.LanguageName }}" 
+                               href="{{ .Permalink }}">
+                            {{ .Language.LanguageName }}</a>
+                        </li>
+                    {{ end }}
+               {{ end }}
+        </ul>
             <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
-
         </div>
     </nav>
 </div>
