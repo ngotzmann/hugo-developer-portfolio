@@ -8,7 +8,7 @@ a {
     color: #{{ .Site.Data.homepage.theming.linkColor }};
 }
 a:hover {
-    color: #{{ .Site.Data.homepage.theming.linkColor }};
+    color: #{{ .Site.Data.homepage.theming.hoverLinkColor }};
 }
 a:visited {
     color: #{{ .Site.Data.homepage.theming.linkColor }};
@@ -175,7 +175,9 @@ a:visited {
             <div class="uk-flex-center" style="margin-top: 60px; margin-bottom: 40px;" uk-grid>
             {{ range $siteData.homepage.subskill.item }}
             <div>
-                <img style="width: 40px; height: 40px;" class="contain skills" src="{{.logo}}" alt="{{.titel}}" loading="lazy">
+                <a href="{{.link}}" target=”_blank”>
+                    <img style="width: 40px; height: 40px;" class="contain skills" src="{{.logo}}" alt="{{.titel}}" loading="lazy">
+                </a>
             </div>
             {{ end }}
         </div>
