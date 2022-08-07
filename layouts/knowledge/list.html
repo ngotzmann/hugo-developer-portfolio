@@ -1,0 +1,106 @@
+{{ define "main" }} {{ partial "page-title.html" . }}
+
+<section>
+  <div class="uk-container uk-margin-xlarge-bottom">
+    <div uk-filter="target: .js-filter">
+      <ul class="">
+        {{ $siteData := (index .Site.Data .Site.Language.Lang) }}
+        <!-- industries -->
+        {{ if $siteData.knowledge.industries.enable }}
+        <section>
+          <div class="uk-container knowledge-top-margin">
+            <h2 class="uk-heading-line uk-text-center uk-heading-line"><span>{{ $siteData.knowledge.industries.name
+                }}</span>
+            </h2>
+            <div class="uk-text-center uk-flex-center" uk-grid>
+              {{ range $siteData.knowledge.industries.item }}
+              <div class="uk-card uk-card-small uk-card-hover uk-card-body">
+                <h6 class="uk-card-title .knowledge-card-hover">{{.title }}</h6>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+        {{ end }}
+        <!-- ./industries -->
+
+        <!-- development_methods -->
+        {{ if $siteData.knowledge.development_methods.enable }}
+        <section>
+          <div class="uk-container knowledge-top-margin">
+            <h2 class="uk-heading-line uk-text-center uk-heading-line"><span>{{
+                $siteData.knowledge.development_methods.name }}</span>
+            </h2>
+            <div class="uk-text-center uk-flex-center" uk-grid>
+              {{ range $siteData.knowledge.development_methods.item }}
+              <div class="uk-card uk-card-small uk-card-hover uk-card-body">
+                <h6 class="uk-card-title">{{.title }}</h6>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+        {{ end }}
+        <!-- ./development_methods -->
+
+        <!-- programming_languages -->
+        {{ if $siteData.knowledge.programming_languages.enable }}
+        <section>
+          <div class="uk-container knowledge-top-margin">
+            <h2 class="uk-heading-line uk-text-center uk-heading-line"><span>{{
+                $siteData.knowledge.programming_languages.name }}</span>
+            </h2>
+            <div class="uk-text-center uk-flex-center" uk-grid>
+              {{ range $siteData.knowledge.programming_languages.item }}
+              <div class="uk-card uk-card-small uk-card-hover uk-card-body">
+                <h6 class="uk-card-title">{{.title }}</h6>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+        {{ end }}
+        <!-- ./programming_languages -->
+
+        <!-- frameworks_libraries -->
+        {{ if $siteData.knowledge.frameworks_libraries.enable }}
+        <section>
+          <div class="uk-container knowledge-top-margin">
+            <h2 class="uk-heading-line uk-text-center uk-heading-line"><span>{{
+                $siteData.knowledge.frameworks_libraries.name }}</span>
+            </h2>
+            <div class="uk-text-center uk-flex-center" uk-grid>
+              {{ range $siteData.knowledge.frameworks_libraries.item }}
+              <div class="uk-card uk-card-small uk-card-hover uk-card-body">
+                <h6 class="uk-card-title .knowledge-card-hover">{{.title }}</h6>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+        {{ end }}
+        <!-- ./frameworks_libraries -->
+
+        <!-- tools -->
+        {{ if $siteData.knowledge.tools.enable }}
+        <section>
+          <div class="uk-container knowledge-top-margin">
+            <h2 class="uk-heading-line uk-text-center uk-heading-line"><span>{{ $siteData.knowledge.tools.name }}</span>
+            </h2>
+            <div class="uk-text-center uk-flex-center" uk-grid>
+              {{ range $siteData.knowledge.tools.item }}
+              <div class="uk-card uk-card-small uk-card-hover uk-card-body">
+                <h6 class="uk-card-title .knowledge-card-hover">{{.title }}</h6>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+        {{ end }}
+        <!-- ./tools -->
+      </ul>
+      </ul>
+    </div>
+  </div>
+</section>
+{{ end }}
