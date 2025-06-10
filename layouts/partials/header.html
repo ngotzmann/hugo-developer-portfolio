@@ -25,7 +25,7 @@
                 {{end}}
                 {{end}}
                 <li><span style="font-size: 18px; text-transform: none; align-items: center; display: flex; min-height: 80px; padding: 0 15px;">|</span></li>
-                {{ if .Site.IsMultiLingual }}
+                {{ if hugo.IsMultilingual }}
                     {{ range $.Translations }}
                         <li>
                             <a style="font-size: 18px; list-style-type: none; text-transform: uppercase; color: #{{ .Site.Data.homepage.theming.linkColor }};" 
